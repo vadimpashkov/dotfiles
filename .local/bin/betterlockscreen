@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Обновить обои для экрана блокировки
+betterlockscreen -u ~/.config/betterlockscreen/wallpapers/ --fx
+
+# Установить обои на рабочий стол
+betterlockscreen -w

@@ -1,0 +1,38 @@
+#!/bin/env bash
+
+NAME="OpenVPN"
+ROFI_TITLE="$NAME Connection:"
+
+notify-send $NAME "Get information from start"
+
+VPN_CONFIG_PATH="/etc/openvpn/client"
+VPN_CONNECTED=$(pgrep -a openvpn)
+
+DISCONNECT_ITEM="Disconnect from current VPN"
+
+if [ -n "$VPN_CONNECTED" ]; then
+  configs="$DISCONNECT_ITEM\n$(sudo find $VPN_CONFIG_PATH -iname '*.ovpn' -printf "%f\n")"
+else
+  configs=$(sudo find $VPN_CONFIG_PATH -iname '*.ovpn' -printf "%f\n")
+fi
+
+if [ -z "$configs" ]; then
+  echo "*.ovpn files not found to dir $VPN_CONFIG_PATH." | rofi -dmenu -p "$ROFI_TITLE"
+  exit 1
+fi
+
+selected_config=$(echo -e "$configs" | rofi -dmenu -p "$ROFI_TITLE")
+
+if [ -n "$selected_config" ]; then
+  if [ "$selected_config" == "$DISCONNECT_ITEM" ]; then
+    sudo killall openvpn
+    notify-send $NAME "VPN disconnected"
+  else
+    if [ -n "$VPN_CONNECTED" ]; then
+      sudo killall openvpn
+    fi
+    sudo openvpn --config "$VPN_CONFIG_PATH/$selected_config" > /dev/null &
+    notify-send $NAME "VPN connected"
+  fi
+fi
+

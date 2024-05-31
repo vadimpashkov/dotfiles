@@ -1,0 +1,11 @@
+#!/bin/env bash
+
+choice=$(printf " Power Off\n Reboot\n󰤄 Suspend\n Hibernate\n󰍃 Log Out\n󰌾 Lock" | rofi -dmenu -p "Power Manager:")
+case "$choice" in
+  "󰌾 Lock") betterlockscreen -l ;;
+  "󰍃 Log Out") pkill -KILL -u "$USER" ;;
+  "󰤄 Suspend") systemctl suspend && betterlockscreen -l ;;
+  " Reboot") systemctl reboot ;;
+  " Hibernate") systemctl hibernate ;;
+  " Power Off") systemctl poweroff ;;
+esac

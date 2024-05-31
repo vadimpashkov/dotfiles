@@ -1,0 +1,5 @@
+[core]
+  exludesfile = $HOME/.gitignore
+[user]
+  email = vadimpashkov.job@gmail.com
+  name = Vadim Pashkov
