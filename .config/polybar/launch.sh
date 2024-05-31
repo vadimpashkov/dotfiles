@@ -1,3 +1,3 @@
 killall -q polybar
-echo "---" | tee -a /tmp/main_bar.log
-polybar example >> /tmp/main_bar.log
+echo "---" | tee -a /tmp/polybar_main.log
+polybar example >> /tmp/polybar_main.log
