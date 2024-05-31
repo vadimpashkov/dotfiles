@@ -18,6 +18,10 @@ super + Return
 super + @space
 	rofi -show drun
 
+# Показать/скрыть polybar
+super + p
+	polybar-toggle
+
 # close and kill
 super + {_,shift + }w
 	bspc node -{c,k}
