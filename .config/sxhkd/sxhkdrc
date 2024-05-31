@@ -1,14 +1,14 @@
-#
-# wm independent hotkeys
-#
-
-# terminal emulator
-super + Return
-	kitty
-
-# make sxhkd reload its configuration files:
+# Перезагрузить sxhkd
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# Выйти/перезагрузить bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# Открыть терминал
+super + Return
+	kitty
 
 #
 # /--- Rofi ---/
@@ -17,14 +17,6 @@ super + Escape
 # Меню приложений
 super + @space
 	rofi -show drun
-
-#
-# bspwm hotkeys
-#
-
-# quit/restart bspwm
-super + alt + {q,r}
-	bspc {quit,wm -r}
 
 # close and kill
 super + {_,shift + }w
