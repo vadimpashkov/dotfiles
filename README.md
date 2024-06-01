@@ -13,10 +13,10 @@ ls -ld <dir>
 
 ```
 # Установим права доступа к каталогу таким образом, чтобы текущий пользователь мог читать, писать и запускать файлы, а другие пользователи могли только читать и выполнять файлы
-sudo chmod -r 755 <dir>
+sudo chmod -R 755 <dir>
 
 # Выдадим права текущему пользователю на каталог (и все что внутри)
-sudo chown <current-user-name>:users -r <dir>
+sudo chown <current-user-name>:users -R <dir>
 ```
 
 ### Stow
@@ -36,8 +36,8 @@ git clone git@github.com:vadimpashkov/dotfiles.git
 Присвойте права каталогу `dotfiles`:
 
 ```
-sudo chmod 755 -r ~/dotfiles
-sudo chown <current-user-name>:users -r ~/dotfiles
+sudo chmod 755 -R ~/dotfiles
+sudo chown <current-user-name>:users -R ~/dotfiles
 ```
 
 Перейдите в склонированную папку `dotfiles` и создайте символические ссылки с помощью следующей команды:
