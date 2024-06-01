@@ -2,6 +2,7 @@
 
 # Автостарт
 pgrep -x sxhkd > /dev/null || sxhkd &
+picom --config $HOME/.config/picom/picom.conf &
 polybar &
 
 bspc monitor -d 1 2 3 4 5 6
