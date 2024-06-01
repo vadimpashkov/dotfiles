@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Путь к файлу истории буфера обмена
+HISTORY_FILE="$HOME/.clipboard_history"
+
+# Отображаем историю буфера обмена в rofi и получаем выбор пользователя
+SELECTION=$(tac "$HISTORY_FILE" | rofi -dmenu -p "Clipboard History" -i)
+
+# Если пользователь сделал выбор, то обрезаем пробелы и копируем его в буфер обмена,
+# и затем вставляем с помощью xdotool
+if [ -n "$SELECTION" ]; then
+  # Обрезаем пробелы с начала и конца строки
+  TRIMMED_SELECTION=$(echo "$SELECTION" | xargs)
+
+  # Копируем обрезанное значение в буфер обмена
+  echo -n "$TRIMMED_SELECTION" | xclip -selection clipboard
+  
+  # Вставляем текст из буфера обмена в место, где находится курсор
+  # Имитируем нажатие комбинации клавиш Ctrl+V
+  xdotool key --clearmodifiers ctrl+v
+fi
