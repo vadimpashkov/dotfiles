@@ -18,6 +18,19 @@ super + Return
 super + @space
 	rofi -show drun
 
+#
+# /--- Screenshot ---/
+#
+
+@Print
+	screenshot
+
+shift + @Print
+	screenshot select
+
+control + @Print
+	screenshot window
+
 # Показать/скрыть polybar
 super + p
 	polybar-toggle
