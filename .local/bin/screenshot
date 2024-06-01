@@ -1,20 +1,20 @@
 #! /bin/sh
 
-FOLDER="$HOME/Pictures/Screenshots/%d-%m-%Y/"
-FILE_NAME="%H-%M-%S.png"
+FOLDER="$HOME/Pictures/Screenshots/$(date +%d-%m-%Y)/"
+FILE_NAME="$(date +%H-%M-%S).png"
 OUTPUT="$FOLDER$FILE_NAME"
 
 mkdir -p "$FOLDER"
 
 case "$1" in
 	"select")
-		scrot "$OUTPUT" --select --line mode=edge -e --freeze 'xclip -selection clipboard -t image/png -i "$f"'
+		scrot "$OUTPUT" --select --line mode=edge --freeze -e 'xclip -selection clipboard -t image/png -i "$f"' || exit
 		;;
 	"window")
-		scrot "$OUTPUT" --focused --border -e --freeze 'xclip -selection clipboard -t image/png -i "$f"'
+		scrot "$OUTPUT" --focused --border --freeze -e 'xclip -selection clipboard -t image/png -i "$f"' || exit
 		;;
 	*)
-		scrot "$OUTPUT" --freeze
+		scrot "$OUTPUT" --freeze -e 'xclip -selection clipboard -t image/png -i "$f"' || exit
 		;;
 esac
 
