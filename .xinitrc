@@ -43,6 +43,4 @@ xinput set-prop 20 295 -0.75
 # Настройки мониторов
 $HOME/.screenlayout/display.sh
 
-$HOME/.config/polybar/launch.sh
-
 exec bspwm
