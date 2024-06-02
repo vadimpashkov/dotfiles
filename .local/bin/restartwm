@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Останавливаем picom и polybar
+killall -q picom
+killall -q polybar
+
+# Ожидаем полного завершения предыдущих команд
+while pgrep -u $UID -x picom >/dev/null; do sleep 1; done
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+# Перезагружаем bspwm и sxhkd
+pkill -USR1 -x sxhkd
+
+# Перезагружаем bspwm
+bspc wm -r
