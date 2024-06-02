@@ -22,6 +22,8 @@ vim.opt.shiftwidth = 2
 -- При нажатии на Tab будет вставляться табуляция (а не 2 пробела)
 vim.opt.expandtab = false
 
+vim.opt.timeoutlen = 200
+
 -- Сохраняем файл, если изменили фокус
 -- vim.api.nvim_create_autocmd("FocusLost", {
 -- 	pattern = "*",
