@@ -26,9 +26,6 @@ super + period
 super + backslash
 	rofi -show calc -no-show-match -no-sort
 
-super + v
-	rofi-buffer
-
 #
 # /--- Screenshot ---/
 #
