@@ -29,12 +29,23 @@ return {
 				capabilities = capabilities,
 			})
 
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "gb", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "Показать подсказку" })
+			vim.keymap.set(
+				"n",
+				"<leader>cd",
+				vim.lsp.buf.definition,
+				{ desc = "Перейти к определению" }
+			)
 			vim.keymap.set(
 				"n",
 				"<leader>ca",
 				vim.lsp.buf.code_action,
+				{ desc = "Совершить операцию над кодом" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>cr",
+				":Telescope lsp_references<CR>",
 				{ desc = "Совершить операцию над кодом" }
 			)
 		end,

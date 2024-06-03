@@ -7,15 +7,21 @@ return {
 		tag = "0.1.6",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
+			local actions = require("telescope.actions")
+			local builtin = require("telescope.builtin")
+
 			require("telescope").setup({
+				defaults = {
+					mappings = {
+						["o"] = actions.select_default + actions.center,
+					},
+				},
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),
 					},
 				},
 			})
-
-			local builtin = require("telescope.builtin")
 
 			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Найти файл" })
 			vim.keymap.set(
