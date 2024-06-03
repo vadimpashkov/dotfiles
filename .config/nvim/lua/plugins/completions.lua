@@ -11,6 +11,9 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"onsails/lspkind.nvim",
+		},
 		config = function()
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
@@ -47,11 +50,21 @@ return {
 					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
+					{ name = "codeium" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 				}, {
+
 					{ name = "buffer" },
 				}),
+				formatting = {
+					format = require("lspkind").cmp_format({
+						mode = "symbol",
+						maxwidth = 50,
+						ellipsis_char = "...",
+						symbol_map = { Codeium = "󰁨" },
+					}),
+				},
 			})
 		end,
 	},
