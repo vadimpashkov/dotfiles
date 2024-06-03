@@ -12,7 +12,7 @@ return {
 			TODO = { icon = " ", color = "info" },
 			HACK = { icon = " ", color = "warning" },
 			WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-			NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+			NOTE = { icon = " ", color = "hint", alt = { "INFO", "REMARK" } },
 		},
 	},
 	config = function()
@@ -22,7 +22,17 @@ return {
 
 		vim.keymap.set("n", "<leader>ot", ":TodoTelescope<CR>", { desc = "Открыть список TODO" })
 
-		vim.keymap.set("n", "]t", todo_comments.jump_next, { desc = "Перейти к следующему TODO комментарию" })
-		vim.keymap.set("n", "[t", todo_comments.jump_prev, { desc = "Перейти к предыдущему TODO комментарию" })
+		vim.keymap.set(
+			"n",
+			"]t",
+			todo_comments.jump_next,
+			{ desc = "Перейти к следующему TODO комментарию" }
+		)
+		vim.keymap.set(
+			"n",
+			"[t",
+			todo_comments.jump_prev,
+			{ desc = "Перейти к предыдущему TODO комментарию" }
+		)
 	end,
 }

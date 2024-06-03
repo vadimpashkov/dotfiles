@@ -9,4 +9,4 @@ vim.keymap.set('i', 'оо', '<Esc>')
 
 -- Сохранить изменения в файле  
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Сохранить файл" })vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Сохранить" })
-vim.keymap.set("n", "<leader>c", ":bd<CR>", { desc = "Закрыть файл" })
+vim.keymap.set("n", "<leader>q", ":bd<CR>", { desc = "Закрыть файл" })

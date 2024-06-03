@@ -47,7 +47,7 @@ return {
 				"n",
 				"<leader>cr",
 				":Telescope lsp_references<CR>",
-				{ desc = "Перейти к вызовам" }
+				{ desc = "Открыть список вызовов" }
 			)
 
 			vim.keymap.set(
@@ -61,6 +61,13 @@ return {
 				"<leader>fsw",
 				":Telescope lsp_dynamic_workspace_symbols<CR>",
 				{ desc = "Найти symbol в проекте" }
+			)
+
+			vim.keymap.set(
+				"n",
+				"<leader>cR",
+				vim.lsp.buf.rename,
+				{ desc = "Переименовать символ (переменную/функцию и т.д.)" }
 			)
 		end,
 	},
