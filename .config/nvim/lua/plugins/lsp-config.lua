@@ -42,11 +42,25 @@ return {
 				vim.lsp.buf.code_action,
 				{ desc = "Совершить операцию над кодом" }
 			)
+
 			vim.keymap.set(
 				"n",
 				"<leader>cr",
 				":Telescope lsp_references<CR>",
-				{ desc = "Совершить операцию над кодом" }
+				{ desc = "Перейти к вызовам" }
+			)
+
+			vim.keymap.set(
+				"n",
+				"<leader>fsf",
+				":Telescope lsp_document_symbols<CR>",
+				{ desc = "Найти symbol в файле" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>fsw",
+				":Telescope lsp_dynamic_workspace_symbols<CR>",
+				{ desc = "Найти symbol в проекте" }
 			)
 		end,
 	},

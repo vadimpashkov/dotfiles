@@ -13,7 +13,9 @@ return {
 			require("telescope").setup({
 				defaults = {
 					mappings = {
-						["o"] = actions.select_default + actions.center,
+						n = {
+							["o"] = actions.select_default,
+						},
 					},
 				},
 				extensions = {
@@ -31,9 +33,9 @@ return {
 				{ desc = "Глобальный поиск текста (grep)" }
 			)
 
-			vim.keymap.set("n", "<leader>ob", builtin.buffers, { desc = "Открыть вкладку (buffer)" })
+			vim.keymap.set("n", "<leader>ob", builtin.buffers, { desc = "Открыть список вкладок (buffers)" })
 			vim.keymap.set("n", "<leader>oh", builtin.help_tags, { desc = "Открыть инструкцию" })
-			vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
+			vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, { desc = "Открыть список ранее открытых файлов"})
 
 			require("telescope").load_extension("ui-select")
 		end,
