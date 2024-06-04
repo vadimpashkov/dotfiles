@@ -2,37 +2,63 @@
 
 NAME="OpenVPN"
 ROFI_TITLE="$NAME Connection:"
+VPN_CONFIG_PATH="$HOME/openvpn-configs"
 
-notify-send $NAME "Get information from start"
+# Создаем директорию для конфигов, если она не существует
+mkdir -p $VPN_CONFIG_PATH
 
-VPN_CONFIG_PATH="/etc/openvpn/client"
+# Ищем запущенные процессы openvpn
 VPN_CONNECTED=$(pgrep -a openvpn)
 
-DISCONNECT_ITEM="Disconnect from current VPN"
+show_menu() {
+# Формируем список конфигураций
+configs=$(find $VPN_CONFIG_PATH -iname '*.ovpn' -printf "%f\n")
 
-if [ -n "$VPN_CONNECTED" ]; then
-  configs="$DISCONNECT_ITEM\n$(sudo find $VPN_CONFIG_PATH -iname '*.ovpn' -printf "%f\n")"
-else
-  configs=$(sudo find $VPN_CONFIG_PATH -iname '*.ovpn' -printf "%f\n")
-fi
-
+# Проверяем наличие конфигураций
 if [ -z "$configs" ]; then
-  echo "*.ovpn files not found to dir $VPN_CONFIG_PATH." | rofi -dmenu -p "$ROFI_TITLE"
+  echo "*.ovpn files not found in dir $VPN_CONFIG_PATH." | rofi -dmenu -p "$ROFI_TITLE"
   exit 1
 fi
 
-selected_config=$(echo -e "$configs" | rofi -dmenu -p "$ROFI_TITLE")
-
-if [ -n "$selected_config" ]; then
-  if [ "$selected_config" == "$DISCONNECT_ITEM" ]; then
-    sudo killall openvpn
-    notify-send $NAME "VPN disconnected"
-  else
-    if [ -n "$VPN_CONNECTED" ]; then
-      sudo killall openvpn
-    fi
-    sudo openvpn --config "$VPN_CONFIG_PATH/$selected_config" > /dev/null &
-    notify-send $NAME "VPN connected"
-  fi
+# Добавляем пункт для отключения от VPN
+if [ -n "$VPN_CONNECTED" ]; then
+  DISCONNECT_ITEM="Disconnect from current VPN"
+  configs="$DISCONNECT_ITEM\n$configs"
 fi
 
+# Выбор конфигурации через rofi
+selected_config=$(echo -e "$configs" | rofi -dmenu -p "$ROFI_TITLE")
+
+# Обработка выбора пользователя
+if [ -n "$selected_config" ]; then
+  if [ "$selected_config" == "$DISCONNECT_ITEM" ]; then
+    sudo /usr/bin/pkill openvpn
+    notify-send $NAME "VPN disconnected"
+  else
+    # Отключаем текущий VPN, если подключен
+    if [ -n "$VPN_CONNECTED" ]; then
+      sudo /usr/bin/pkill openvpn
+    fi
+    # Подключаемся к выбранному VPN
+    sudo /usr/bin/openvpn --config "$VPN_CONFIG_PATH/$selected_config" > /dev/null &
+    notify-send $NAME "VPN connected to $selected_config"
+  fi
+fi
+}
+
+print_status() {
+if [ -n "$VPN_CONNECTED" ]; then
+  echo "󰕥"
+else
+	echo "󰒘"
+fi
+}
+
+case "$1" in
+    --status)
+        print_status
+        ;;
+    *)
+        show_menu
+        ;;
+esac

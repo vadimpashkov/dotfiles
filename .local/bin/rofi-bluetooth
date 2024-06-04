@@ -168,6 +168,11 @@ device_trusted() {
     fi
 }
 
+device_remove() {
+	bluetoothctl remove "$1"
+	show_menu
+}
+
 # Toggles device connection
 toggle_trust() {
     if device_trusted "$1"; then
@@ -229,7 +234,7 @@ device_menu() {
     fi
     paired=$(device_paired "$mac")
     trusted=$(device_trusted "$mac")
-    options="$connected\n$paired\n$trusted\n$divider\n$goback\nExit"
+    options="$connected\n$paired\n$trusted\n$divider\nRemove\n$goback\nExit"
 
     # Open rofi menu, read chosen option
     chosen="$(echo -e "$options" | $rofi_command "$device_name")"
@@ -248,6 +253,9 @@ device_menu() {
         "$trusted")
             toggle_trust "$mac"
             ;;
+				"Remove")
+						device_remove "$mac"
+						;;
         "$goback")
             show_menu
             ;;
