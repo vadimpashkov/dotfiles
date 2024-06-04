@@ -10,6 +10,8 @@ return {
 			o = { name = "Открыть" },
 			g = { name = "Git" },
 			c = { name = "Работа с кодом" },
+			fs = { name = "Найти символ" },
+			m = { name = "Markdown" },
 		}, { prefix = "<leader>" })
 	end,
 }
