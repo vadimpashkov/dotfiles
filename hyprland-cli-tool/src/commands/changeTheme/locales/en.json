@@ -1,0 +1,15 @@
+{
+  "configFileAlready": "Файл конфигурации уже создан!",
+  "notConfigFile": "У вас нет файла конфигурации! Для начала создайте его.",
+  "themeName": "Наименование темы",
+  "createConfigCommand": {
+    "description": "Создать конфигурационный файл"
+  },
+  "addThemeCommand": {
+    "description": "Добавить тему в конфигурацию"
+  },
+  "setThemeCommand": {
+    "successfulSetOfTheme": "Тема {{ theme }} установлена!",
+    "description": "Установить тему"
+  }
+}

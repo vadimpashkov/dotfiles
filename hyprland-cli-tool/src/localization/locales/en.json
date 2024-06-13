@@ -1,0 +1,10 @@
+{
+  "changeTheme": {
+    "name": "Hyprland CLI Tools - Theme Changer",
+    "description": "Change theme to Hyprland"
+  },
+  "changeColorScheme": {
+    "name": "Hyprland CLI Tools - Color Scheme Changer",
+    "description": "Change color scheme to Hyprland"
+  }
+}

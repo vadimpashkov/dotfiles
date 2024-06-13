@@ -4,16 +4,22 @@
   "description": "CLI tools for Hyprland",
   "type": "module",
   "scripts": {
-    "build": "node build/esbuild.js",
+    "localization:combine": "node ./build/combineLocalizations.js",
+    "localization:generate-types": "node ./build/generateLocalizationsTypes.js",
+    "localization:check": "node ./build/checkLocalizations.js",
+    "localization": "yarn localization:combine && yarn localization:check && yarn localization:generate-types",
+    "build": "yarn localization && node build/esbuild.js",
     "install-global": "sudo node --no-warnings build/installGlobal.js",
-    "test": "ts-node build/checkLocales.ts"
+    "prettier": "prettier --write ."
   },
   "bin": {
-    "hlt-change-theme": "./dist/changeTheme.js"
+    "hlt-change-theme": "./dist/changeTheme.js",
+    "hlt-change-color-scheme": "./dist/changeColorScheme.js"
   },
   "author": "Vadim Pashkov <vadimpashkov.job@gmail.com> (https://github.com/vadimpashkov)",
   "license": "MIT",
   "dependencies": {
+    "colorjs.io": "^0.5.0",
     "commander": "^12.1.0",
     "inquirer": "^9.2.23"
   },
@@ -21,6 +27,7 @@
     "@types/node": "^20.14.2",
     "esbuild": "^0.21.5",
     "esbuild-plugin-alias": "^0.2.1",
+    "prettier": "^3.3.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   }

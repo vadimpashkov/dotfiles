@@ -1,21 +1,24 @@
-import { Command } from "commander";
+import { Command } from 'commander';
 
-import { addTheme } from "./actions";
-import { checkConfigExists } from "./utils";
+import { getLocalization } from '@localization';
+
+import { addTheme } from './actions';
+import { checkConfigExists } from './utils';
 
 export function addThemeCommand() {
-  const command = new Command("add");
+	const command = new Command('add');
+	const localization = getLocalization();
 
-  command
-    .description("Add theme to config file")
-    .argument("<theme-name>", "Theme name")
-    .action(async (theme) => {
-      if (!checkConfigExists()) {
-        return;
-      }
+	command
+		.description(localization.addThemeCommand.description)
+		.argument('<theme-name>', localization.themeName)
+		.action(async (themeName) => {
+			if (!checkConfigExists()) {
+				return;
+			}
 
-      await addTheme(theme);
-    });
+			await addTheme(themeName);
+		});
 
-  return command;
+	return command;
 }

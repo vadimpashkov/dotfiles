@@ -1,17 +1,15 @@
-import { promises as fs } from "fs";
-import path from "path";
-import process from "process";
+import { promises as fs } from 'fs';
+import path from 'path';
+import process from 'process';
 
-import { getHomeDir } from "@utils";
+import { getHomeDir } from '@utils';
 
-import { Config } from "../types";
-import { getConfig } from "../utils";
-import { THEMES_FOLDER_NAME } from "../define";
+import { Config } from '../types';
+import { getConfig } from '../utils';
+import { THEMES_FOLDER_NAME } from '../define';
+import { getLocalizedString } from '../../../localization';
 
-async function linkThemeFileToRootDir(
-	pathToPlugin: string,
-	pathToTheme: string,
-) {
+async function linkThemeFileToRootDir(pathToPlugin: string, pathToTheme: string) {
 	try {
 		const themeFiles = await fs.readdir(pathToTheme);
 
@@ -25,7 +23,7 @@ async function linkThemeFileToRootDir(
 					await fs.unlink(destPath);
 				} catch (error) {
 					// Игнорируем ошибки, связанные с отсутствием файла или ссылки
-					if (error.code !== "ENOENT") {
+					if (error.code !== 'ENOENT') {
 						throw error;
 					}
 				}
@@ -34,22 +32,15 @@ async function linkThemeFileToRootDir(
 			}),
 		);
 	} catch (error) {
-		console.error("Error creating symbolic links:", error);
+		console.error('Error creating symbolic links:', error);
 		process.exit(1);
 	}
 }
 
-async function changeThemeToPlugins(
-	config: Config,
-	homeDir: string,
-	themeName: string,
-) {
+async function changeThemeToPlugins(config: Config, homeDir: string, themeName: string) {
 	const plugins = config.plugins;
 
-	for (const [
-		pluginName,
-		{ enabled: pluginEnabled, path: pluginPath },
-	] of Object.entries(plugins)) {
+	for (const [pluginName, { enabled: pluginEnabled, path: pluginPath }] of Object.entries(plugins)) {
 		if (!pluginEnabled) {
 			continue;
 		}
@@ -76,4 +67,6 @@ export async function setTheme(themeName: string) {
 	checkThemeNameToConfig(config, themeName);
 
 	await changeThemeToPlugins(config, getHomeDir(), themeName);
+
+	console.log(getLocalizedString('setThemeCommand.successfulSetOfTheme', { theme: themeName }));
 }

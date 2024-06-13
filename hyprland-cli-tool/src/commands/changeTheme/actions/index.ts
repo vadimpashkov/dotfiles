@@ -1,3 +1,3 @@
-export * from "./createConfig";
-export * from "./addTheme";
-export * from "./setTheme";
+export * from './createConfig';
+export * from './addTheme';
+export * from './setTheme';

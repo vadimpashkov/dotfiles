@@ -1,18 +1,21 @@
-import { Command } from "commander";
+import { Command } from 'commander';
 
-import { createConfig } from "./actions";
-import { checkConfigExists } from "./utils";
+import { getLocalization } from '@localization';
+
+import { createConfig } from './actions';
+import { checkConfigExists } from './utils';
 
 export function createConfigCommand() {
-  const command = new Command("create-config");
+	const command = new Command('create-config');
+	const localization = getLocalization();
 
-  command.description("Create config").action(async () => {
-    if (!checkConfigExists()) {
-      return;
-    }
+	command.description(localization.createConfigCommand.description).action(async () => {
+		if (!checkConfigExists()) {
+			return;
+		}
 
-    await createConfig();
-  });
+		await createConfig();
+	});
 
-  return command;
+	return command;
 }
