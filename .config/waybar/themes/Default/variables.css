@@ -1,0 +1,59 @@
+@define-color primary-100 #DBD3EC;
+@define-color primary-200 #C0AFE1;
+@define-color primary-300 #A387D4;
+@define-color primary-400 #8C64C9;
+@define-color primary-500 #6F47A7;
+@define-color primary-600 #51337C;
+@define-color primary-700 #341F52;
+@define-color primary-800 #1A0E2C;
+@define-color primary-900 #040209;
+
+@define-color positive-100 #AAEC9C;
+@define-color positive-200 #8BCD7D;
+@define-color positive-300 #71A965;
+@define-color positive-400 #5C8C52;
+@define-color positive-500 #466C3E;
+@define-color positive-600 #334F2C;
+@define-color positive-700 #1F331B;
+@define-color positive-800 #0E1A0B;
+@define-color positive-900 #020402;
+
+@define-color negative-100 #EBD0D0;
+@define-color negative-200 #E1A8A9;
+@define-color negative-300 #D57A7D;
+@define-color negative-400 #BE5960;
+@define-color negative-500 #934449;
+@define-color negative-600 #6D3134;
+@define-color negative-700 #471E20;
+@define-color negative-800 #260D0F;
+@define-color negative-900 #080202;
+
+@define-color warning-100 #F5D29C;
+@define-color warning-200 #E6AE4F;
+@define-color warning-300 #BF8F3D;
+@define-color warning-400 #9D7532;
+@define-color warning-500 #7A5A24;
+@define-color warning-600 #5A4218;
+@define-color warning-700 #3A290D;
+@define-color warning-800 #1E1405;
+@define-color warning-900 #050301;
+
+@define-color informing-100 #C7DAEF;
+@define-color informing-200 #97BDE6;
+@define-color informing-300 #609CDC;
+@define-color informing-400 #4681BD;
+@define-color informing-500 #356393;
+@define-color informing-600 #25486D;
+@define-color informing-700 #152E48;
+@define-color informing-800 #081726;
+@define-color informing-900 #010407;
+
+@define-color neutral-100 #D8D7D9;
+@define-color neutral-200 #B9B8BC;
+@define-color neutral-300 #99979D;
+@define-color neutral-400 #7E7C83;
+@define-color neutral-500 #615F66;
+@define-color neutral-600 #47454B;
+@define-color neutral-700 #2D2C30;
+@define-color neutral-800 #161618;
+@define-color neutral-900 #030304;

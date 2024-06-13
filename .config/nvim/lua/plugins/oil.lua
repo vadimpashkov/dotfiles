@@ -12,6 +12,9 @@ return {
 				["h"] = "actions.parent",
 				["."] = "actions.toggle_hidden",
 			},
+			view_options = {
+				show_hidden = true,
+			},
 		})
 
 		vim.keymap.set(

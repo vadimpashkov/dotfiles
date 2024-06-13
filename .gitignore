@@ -1,1 +1,5 @@
 TODO.md
+
+.config/waybar/*.{jsonc,css}
+
+.local/share/Wallpapers/*.{png,jpg,jpeg}

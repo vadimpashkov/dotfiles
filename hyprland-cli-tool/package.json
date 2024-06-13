@@ -1,0 +1,27 @@
+{
+  "name": "hyprland-cli-tools",
+  "version": "0.1.0",
+  "description": "CLI tools for Hyprland",
+  "type": "module",
+  "scripts": {
+    "build": "node build/esbuild.js",
+    "install-global": "sudo node --no-warnings build/installGlobal.js",
+    "test": "ts-node build/checkLocales.ts"
+  },
+  "bin": {
+    "hlt-change-theme": "./dist/changeTheme.js"
+  },
+  "author": "Vadim Pashkov <vadimpashkov.job@gmail.com> (https://github.com/vadimpashkov)",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "inquirer": "^9.2.23"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "esbuild": "^0.21.5",
+    "esbuild-plugin-alias": "^0.2.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
