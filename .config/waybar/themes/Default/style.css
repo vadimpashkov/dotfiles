@@ -5,7 +5,6 @@
     Inter,
     JetBrains Mono Nerd Font,
     monospace;
-  font-size: 12px;
 }
 
 window#waybar {
@@ -28,6 +27,9 @@ window#waybar {
   border-radius: 4px;
   background-color: @neutral-700;
   color: @neutral-400;
+  transition:
+    background-color 0.3s linear,
+    color 0.3s linear;
 }
 
 #workspaces button:not(:last-child) {
@@ -42,6 +44,7 @@ window#waybar {
 #workspaces button.active {
   background-color: @primary-700;
   color: @primary-400;
+  font-size: 18px;
 }
 
 #workspaces button.urgent {

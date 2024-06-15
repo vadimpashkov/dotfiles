@@ -9,6 +9,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 export PATH="$HOME/.local/bin:$PATH"
+export CONFIG_DIR="$HOME/.config"
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
